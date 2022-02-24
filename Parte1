@@ -1,0 +1,183 @@
+//Proyecto de Progrmacion Basica
+
+#include <iostream> 
+using namespace std;
+
+int main()
+{
+
+
+	int opcion, cc, i = 0, resp, op1, td, op2;
+	float k;
+	char ac[5], nc[100], n[100000], f[5];
+
+	do
+	{
+
+		do
+		{
+			cout << " " << endl;
+			cout << " Menu de opciones " << endl;
+			cout << " 1. Agendar cita " << endl;
+			cout << " 2. Modificar cita " << endl;
+			cout << " 3. Eliminar cita " << endl;
+			cout << " 4. Lista de citas vigentes " << endl;
+			cout << " 5. Limpiar pantalla " << endl;
+			cout << " 6. Salir " << endl;
+			cout << " Elija la opcion que desee (numero): ";
+			cin >> opcion;
+		} while (opcion < 1 or opcion>6);
+
+		switch (opcion)
+		{
+
+		case 1:
+			cout << " Agende cita, dd/mm:   ";
+			cin >> ac;
+
+			i = i + 1;
+
+			cout << "  Su numero de cita es: 0000" << i;
+			cout << "  " << endl; 
+			cout << " Ingrese su nombre:  ";
+			cin >> n;
+			cout << " Hora del tratamiento (formato 24 horas): ";
+			cin >> f;
+			cout << " " << endl;
+			do {
+				cout << "  Tratamientos " << endl;
+				cout << " 1. Frenos                             2. Extracción " << endl;
+				cout << " 3. Escalado y Alisado Radicular	    4. Edodoncias " << endl;
+				cout << "Elija el deseado: ";
+				cin >> td;
+			} while (td < 1 or td>4);
+			switch (td)
+			{
+			case 1:
+				cout << " Descripcion: Colocacion de brackets para la mejora de la dentadura " << endl;
+				cout << " Precio unitario del tratamiento: 400 pesos " << endl;
+				cout << " Cantidad del tratamiento " << endl;
+				do {
+					cout << " Nivel de deformidad dental" << endl;
+					cout << " 1. Nivel 1        2. Nivel 2" << endl;
+					cout << " 3. Nivel 3        4. Nivel 4" << endl;
+					cout << " Elija (numero): ";
+					cin >> op2;
+				} while (op2 < 1 or op2 > 4);
+				switch (op2)
+				{
+				case 1:
+					cout << " 1 año / 6 citas / 400 cita de colocacion/ 200 de citas de ajuste " << endl;
+					cout << " Total del tratamiento: 1400 ";
+					break;
+				case 2: cout << " 2 años / 10 citas/ 400 cita de colocacion / 200 de citas de ajuste " << endl;
+					cout << " Total del tratamiento: 2200 ";
+					break;
+				case 3:
+					cout << " 3 años / 14 citas / 400 cita de colocacion / 200 citas de ajuste /  " << endl;
+					cout << " 250 cambio de bracktes " << endl;
+					cout << " Total del tratamiento: 3250 ";
+					break;
+				case 4:
+					cout << " 4 años / 18 citas / 400 cita de colocacion / 200 cita de ajuste " << endl;
+					cout << " 250 cambio de brackets " << endl;
+					cout << " Total del tratamiento: 4050 ";
+					break;
+
+				}
+
+				break;
+
+			case 2:
+				cout << " Descripcion" << endl;
+				cout << " Diente Enterrado en el Hueso" << endl;
+				cout << " Precio unitario: 180 - 550 pesos " << endl;
+				cout << " " << endl;
+				cout << " Cantidad total del tratamiento: " << endl;
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200" << endl;
+				cout << " Radiografías panorámicas: $100-$200" << endl;
+				cout << " Tratamiento: 180 - 550 pesos " << endl;
+				cout << " " << endl;
+				cout << " Total: 355-950 " << endl;
+				break;
+			
+			case 3: 
+				cout << " Descripcion" << endl;
+				cout << " " << endl; 
+				cout << "Eliminar el sarro y la placa bacteriana que se encuentran debajo de los tejidos blandos." << endl;
+				cout << " Precio unitario: 1200-1600"<< endl;
+				cout << "" << endl; 
+				cout << " Canidad total del tratamiento " << endl; 
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+				cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+				cout << " Tratamiento: 1200-1600 pesos " << endl;
+				cout << " Total: 1375-2000 pesos" << endl;
+				cout << " " << endl;
+				break;
+
+			case 4:
+				cout << " Descripcion " << endl; 
+				cout << " Eliminar la parte profunda del diente cuando se encuentra lesionado o infectado " << endl; 
+				cout << " Precio unitario: 1800-5500 pesos " << endl; 
+				cout << " " << endl; 
+				cout << " Canidad total del tratamiento " << endl;
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+				cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+				cout << " Tratamiento: 1800-5500 pesos " << endl;
+				cout << " Total: 3775-5900 pesos " << endl;
+				cout << " " << endl; 
+				break;
+			}
+
+break;
+
+		case 2:
+			do {
+				cout << " Desea modificar su cita? " << endl;
+				cout << " 1. Si                  2. No " << endl;
+				cout << " ";
+				cin >> resp;
+			} while (resp < 1 or resp>1);
+
+			if (resp != 2)
+			{
+				cout << " Anterior cita" << endl;
+				cout << "''" << ac << endl;
+				cout << " Ingrese nueva cita (dd/mm) : ";
+				cin >> nc;
+				i = i + 1;
+
+				cout << " Su nuevo numero de cita es: " << i << endl;
+			}
+			else
+			{
+				cout << " Regresar al menu " << endl;
+			}
+			break;
+
+		case 3:
+			do
+			{
+				cout << " Cita previa: " << nc << endl;
+				cout << " Desea eliminarla?  " << endl;
+				cout << " 1. Si             2. No " << endl;
+				cout << " ";
+				cin >> op1;
+			} while (op1 < 1 or op1>2);
+
+			if (op1 == 1)
+			{
+
+			}
+			else
+			{
+				cout << " Cita previa: " << nc << endl;
+
+			}
+
+		}
+
+	}
+	while (opcion != 6);
+	cout << " Tenga lindo dia<3 ";
+}
