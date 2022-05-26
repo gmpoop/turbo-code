@@ -1,0 +1,553 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h> 
+#include <string> 
+#include <fstream> 
+#include <stdlib.h> 
+#include <vector> 
+
+using namespace std;
+
+//funciones 
+void Ag();
+void Mc();
+void lista();
+void eliminar();
+void archivos();
+
+
+
+int nc, * ac, * hora;
+string* td, * fecha;
+string* nom;
+int op, op1, op2, h = 0; //Opociones 
+int  i;
+int  * sub, x; //Operaciones
+float total;
+int main()
+{
+	//Menu de opciones
+	cout << " \tMenu de opciones\n 1. Agendar cita\n 2. Modificar cita\n 3. Eliminar cita\n 4. Lista de citas vigentes\n";
+	cout << " 5. Limpiar pantalla\n 6. Salir\n";
+	cout << "Elija la opcion que desee: ";
+	cin >> op;
+
+	while (op != 6)
+	{
+		switch (op)
+		{
+		case 1:
+			Ag();
+			return main();
+			break;
+
+		case 2:
+			Mc();
+			return main();
+			break;
+
+		case 3:
+			eliminar();
+			return main();
+			break;
+
+		case 4:
+			lista();
+			return main();
+			break;
+
+		case 5:
+			system("cls");
+			return main();
+			break;
+
+		case 6:
+			archivos();
+			break;
+		}
+	}
+}
+
+void Ag()
+{
+	cout << "Numero de citas que desea hacer: ";
+	cin >> nc;
+	ac = new int[nc];
+	nom = new string[nc];
+	hora = new int[nc];
+	fecha = new string[nc];
+	td = new string[nc];
+	sub = new int[nc];
+
+	for (int i = 0; i < nc; i++)
+	{
+		cout << " Cita 00" << i + 1 << endl;
+		while (getchar() != '\n');
+		cout << "Ingrese nombre" << endl;
+		getline(cin, nom[i]);
+		while (getchar() != '\n');
+		cout << "Ingrese fecha (dd/mm): " << endl;
+		getline(cin, fecha[i]);
+		cout << "Ingrese hora (formato 24 horas): " << endl;
+		cin >> hora[i];
+		h = hora[i];
+
+		if (h > 0 and h < 12)
+		{
+			cout << h << " am";
+
+		}
+		else
+		{
+			cout << h << " pm";
+
+		}
+		do
+		{
+			cout << "  \nLista de Tratamientos " << endl;
+			cout << " 1. Frenos                             2. Extracción " << endl;
+			cout << " 3. Limpieza	                        4. Aislado y Escalado " << endl;
+			cout << "Elija el deseado: ";
+			cin >> op2;
+
+		} while (op2 < 1 or op2>4);
+		switch (op2)
+		{
+		case 1:
+			cout << " Descripcion: Colocacion de brackets para la mejora de la dentadura " << endl;
+			cout << " Precio unitario del tratamiento: 400 pesos " << endl;
+			cout << " Cantidad del tratamiento " << endl;
+			do {
+				cout << " Nivel de deformidad dental" << endl;
+				cout << " 1. Nivel 1        2. Nivel 2" << endl;
+				cout << " 3. Nivel 3        4. Nivel 4" << endl;
+				cout << " Elija (numero): ";
+				cin >> op2;
+			} while (op2 < 1 or op2 > 4);
+			switch (op2)
+			{
+
+			case 1:
+				cout << " 3 años / 14 citas / 400 cita de colocacion / 200 citas de ajuste /  " << endl;
+				cout << " 250 cambio de bracktes " << endl;
+				cout << " Total del tratamiento: 3250\n ";
+				cout << "1. Aceptar \n";
+				cin >> op2;
+				if (op2 == 1)
+				{
+					cout << " Brackets/Nivel3/3250$\n";
+					while (getchar() != '\n');
+					cout << " Escriba su tratamiento: " << endl;
+					getline(cin, td[i]);
+					cout << " Escriba su precio: \n";
+					cin >> sub [i];
+
+					
+				}
+				system("cls");
+				cout << endl;
+				break;
+			case 2:
+				cout << " 4 años / 18 citas / 400 cita de colocacion / 200 cita de ajuste " << endl;
+				cout << " 250 cambio de brackets " << endl;
+				cout << " Total del tratamiento: 4050\n ";
+				cout << "1. Aceptar \n";
+				cin >> op2;
+				if (op2 == 1)
+				{
+					cout << " Brackets/Nivel4/1600$\n";
+					while (getchar() != '\n');
+					cout << " Escriba su tratamiento:\n ";
+					getline(cin, td[i]);
+					cout << " Escriba su precio: \n";
+					cin >> sub[i];
+				}
+				system("cls");
+				cout << endl;
+				break;
+
+			}
+
+			break;
+
+		case 2:
+			cout << " Descripcion" << endl;
+			cout << " Diente Enterrado en el Hueso" << endl;
+			cout << " Precio unitario: 180 - 550 pesos " << endl;
+			cout << " " << endl;
+			cout << " Cantidad total del tratamiento: " << endl;
+			cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200" << endl;
+			cout << " Radiografías panorámicas: $100-$200" << endl;
+			cout << " Tratamiento: 180 - 550 pesos " << endl;
+			cout << " " << endl;
+			cout << " Total: 355-950 " << endl;
+			cout << "1. Aceptar " << endl;
+			cin >> op2;
+			if (op2 == 1)
+			{
+				cout << " Diente Enterrado/950\n$";
+				while (getchar() != '\n');
+				cout << " Escriba su tratamiento:\n ";
+				getline(cin, td[i]);
+				cout << " Escriba su precio: \n";
+				cin >> sub[i];
+			}
+			system("cls");
+			cout << endl;
+			break;
+
+		case 3:
+			cout << " Descripcion" << endl;
+			cout << " " << endl;
+			cout << "Eliminar el sarro y la placa bacteriana que se encuentran debajo de los tejidos blandos." << endl;
+			cout << " Precio unitario: 1200-1600" << endl;
+			cout << "" << endl;
+			cout << " Canidad total del tratamiento " << endl;
+			cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+			cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+			cout << " Tratamiento: 1200-1600 pesos " << endl;
+			cout << " Total: 1375-2000 pesos" << endl;
+			cout << " " << endl;
+			cout << "1. Aceptar\n ";
+			cin >> op2;
+			if (op2 == 1)
+			{
+				cout << " LimpiezaSarro/2000$\n";
+				while (getchar() != '\n');
+				cout << " Escriba su tratamiento:\n ";
+				getline(cin, td[i]);
+				cout << " Escriba su precio: \n";
+				cin >> sub[i];
+			}
+			system("cls");
+			cout << endl;
+			break;
+
+
+		case 4:
+			cout << " Descripcion " << endl;
+			cout << " Eliminar la parte profunda del diente cuando se encuentra lesionado o infectado " << endl;
+			cout << " Precio unitario: 1800-5500 pesos " << endl;
+			cout << " " << endl;
+			cout << " Canidad total del tratamiento " << endl;
+			cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+			cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+			cout << " Tratamiento: 1800-5500 pesos " << endl;
+			cout << " Total: 3775-5900 pesos " << endl;
+			cout << " " << endl;
+			cout << "1. Aceptar \n";
+			cin >> op2;
+			if (op2 == 1)
+			{
+				cout << " Escalado y Alisado/5900\n";
+				while (getchar() != '\n');
+				cout << " Escriba su tratamiento:\n ";
+				getline(cin, td[i]);
+				cout << " Escriba su precio: \n";
+				cin >> sub[i];
+			}
+			system("cls");
+			cout << endl;
+			break;
+		}
+	}
+}
+
+void Mc()
+{
+	int j;
+	cout << " Numero de cita que desea mdoificar: ";
+	cin >> j;
+	j = j - 1;
+	cout << " 1.Nmbre\n 2. Fecha\n 3. Hora\n 4. Tratamiento Deseado\n ";
+	cout << " Ingrese la opcion que desea modificar:";
+	cin >> op1;
+	switch (op1)
+	{
+	case 1:
+		for (int i = j; i == j; i++);
+		{
+			while (getchar() != '\n');
+			cout << " Nombre\n";
+			getline(cin, nom[i]);
+
+		}
+		break;
+	case 2:
+		for (int i = j; i == j; i++);
+		{
+			cout << "Fecha:\n  ";
+			cin >> fecha[i];
+
+		}
+		break;
+	case 3:
+		for (int i = j; i == j; i++);
+		{
+			cout << " Hora: \n";
+			cin >> hora[i];
+		}
+		break;
+	case 4:
+		for (int i = j; i == j; i++);
+		{
+			do
+			{
+				cout << "  \nLista de Tratamientos " << endl;
+				cout << " 1. Frenos                             2. Extracción " << endl;
+				cout << " 3. Limpieza	                        4. Aislado y Escalado " << endl;
+				cout << "Elija el deseado: ";
+				cin >> op2;
+
+			} while (op2 < 1 or op2>4);
+			switch (op2)
+			{
+			case 1:
+				cout << " Descripcion: Colocacion de brackets para la mejora de la dentadura " << endl;
+				cout << " Precio unitario del tratamiento: 400 pesos " << endl;
+				cout << " Cantidad del tratamiento " << endl;
+				do {
+					cout << " Nivel de deformidad dental" << endl;
+					cout << " 1. Nivel 1        2. Nivel 2" << endl;
+					cout << " 3. Nivel 3        4. Nivel 4" << endl;
+					cout << " Elija (numero): ";
+					cin >> op2;
+				} while (op2 < 1 or op2 > 4);
+				switch (op2)
+				{
+
+				case 1:
+					cout << " 3 años / 14 citas / 400 cita de colocacion / 200 citas de ajuste /  " << endl;
+					cout << " 250 cambio de bracktes " << endl;
+					cout << " Total del tratamiento: 3250\n ";
+					cout << "1. Aceptar \n";
+					cin >> op2;
+					if (op2 == 1)
+					{
+						cout << " Brackets/Nivel3/3250$\n";
+						while (getchar() != '\n');
+						cout << " Escriba su tratamiento:\n ";
+						getline(cin, td[i]);
+						cout << " Escriba su precio: \n";
+						cin >> sub[i];
+					}
+					cout << endl;
+					break;
+				case 2:
+					cout << " 4 años / 18 citas / 400 cita de colocacion / 200 cita de ajuste " << endl;
+					cout << " 250 cambio de brackets " << endl;
+					cout << " Total del tratamiento: 4050\n ";
+					cout << "1. Aceptar \n";
+					cin >> op2;
+					if (op2 == 1)
+					{
+						cout << " Brackets/Nivel4/1600$\n";
+						while (getchar() != '\n');
+						cout << " Escriba su tratamiento:\n ";
+						getline(cin, td[i]);
+						cout << " Escriba su precio: \n";
+						cin >> sub[i];
+					}
+					cout << endl;
+					break;
+
+				}
+
+				break;
+
+			case 2:
+				cout << " Descripcion" << endl;
+				cout << " Diente Enterrado en el Hueso" << endl;
+				cout << " Precio unitario: 180 - 550 pesos " << endl;
+				cout << " " << endl;
+				cout << " Cantidad total del tratamiento: " << endl;
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200" << endl;
+				cout << " Radiografías panorámicas: $100-$200" << endl;
+				cout << " Tratamiento: 180 - 550 pesos " << endl;
+				cout << " " << endl;
+				cout << " Total: 355-950 " << endl;
+				cout << "1. Aceptar " << endl;
+				cin >> op2;
+				if (op2 == 1)
+				{
+					cout << " Diente Enterrado/950\n$";
+					while (getchar() != '\n');
+					cout << " Escriba su tratamiento:\n ";
+					getline(cin, td[i]);
+					cout << " Escriba su precio: \n";
+					cin >> sub[i];
+				}
+				cout << endl;
+				break;
+
+			case 3:
+				cout << " Descripcion" << endl;
+				cout << " " << endl;
+				cout << "Eliminar el sarro y la placa bacteriana que se encuentran debajo de los tejidos blandos." << endl;
+				cout << " Precio unitario: 1200-1600" << endl;
+				cout << "" << endl;
+				cout << " Canidad total del tratamiento " << endl;
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+				cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+				cout << " Tratamiento: 1200-1600 pesos " << endl;
+				cout << " Total: 1375-2000 pesos" << endl;
+				cout << " " << endl;
+				cout << "1. Aceptar\n ";
+				cin >> op2;
+				if (op2 == 1)
+				{
+					cout << " LimpiezaSarro/2000$\n";
+					while (getchar() != '\n');
+					cout << " Escriba su tratamiento:\n ";
+					getline(cin, td[i]);
+					cout << " Escriba su precio: \n";
+					cin >> sub[i];
+				}
+				cout << endl;
+				break;
+
+
+			case 4:
+				cout << " Descripcion " << endl;
+				cout << " Eliminar la parte profunda del diente cuando se encuentra lesionado o infectado " << endl;
+				cout << " Precio unitario: 1800-5500 pesos " << endl;
+				cout << " " << endl;
+				cout << " Canidad total del tratamiento " << endl;
+				cout << " Limpieza dental, limpieza profunda y pulido básicos: $75-$200 pesos" << endl;
+				cout << " Radiografías panorámicas: $100-$200 pesos" << endl;
+				cout << " Tratamiento: 1800-5500 pesos " << endl;
+				cout << " Total: 3775-5900 pesos " << endl;
+				cout << " " << endl;
+				cout << "1. Aceptar \n";
+				cin >> op2;
+				if (op2 == 1)
+				{
+					cout << " Escalado y Alisado/5900\n";
+					while (getchar() != '\n');
+					cout << " Escriba su tratamiento:\n ";
+					getline(cin, td[i]);
+					cout << " Escriba su precio: \n";
+					cin >> sub[i];
+				}
+				cout << endl;
+				break;
+			}
+		}
+		break;
+
+	}
+
+}
+
+void lista()
+{
+
+	for (int i = 0; i < nc; i++)
+	{
+		if (hora[i] == 0)
+		{
+			cout << " Cita eliminada" << endl;
+		}
+		else
+		{
+			cout << " \t Lista de reistro\n ";
+			cout << "00" << i + 1 << endl;
+			cout << nom[i] << endl;
+			cout << fecha[i] << endl;
+			if (hora[i] > 0 and hora[i] < 12)
+			{
+				cout << hora[i] << "am" << endl;
+			}
+			else
+			{
+				cout << hora[i] << "pm" << endl;
+			}
+			cout << hora[i] << endl;
+			cout << td[i] << endl;
+			cout << "Subtotal: " << sub[i] << endl;
+		}
+	}
+}
+
+void eliminar()
+{
+	int j;
+	cout << "Ingrese el registro a eliminar: ";
+	cin >> j;
+	j = j - 1;
+	cout << "\t Desea eliminar?\n ";
+	cout << " 1. Si\n 2. No \n";
+	cin >> op;
+	if (op == 1)
+	{
+		for (int i = j; i == j; i++)
+		{
+			cout << " Cita eliminada" << endl;
+			nom[i] = "";
+			fecha[i] = "";
+			hora[i] = 0;
+			td[i] = "";
+			sub[i] = 0;
+
+		}
+	}
+	else
+	{
+		cout << "<3";
+	}
+}
+
+
+
+void archivos()
+{
+	ofstream archivo;
+	string nomarchivo;
+	int texto;
+	string texto2;
+	float texto3;
+
+	nomarchivo = "Citas";
+
+	archivo.open(nomarchivo.c_str(), ios::out);
+
+	if (archivo.fail())
+	{
+		cout << " Error al crear archivo ";
+		exit(1);
+	}
+	archivo << "Numero de cita" << "\t";
+	archivo << "Nombre" << "\t";
+	archivo << "Fecha" << "\t";
+	archivo << "Hora" << "\t";
+	archivo << "Tratamiento deseado" << "\t";
+	archivo << " Subtotal " << "\t";
+	archivo << " Total " << "\t";
+
+	for (int i = 0; i < nc; i++)
+	{
+		if (nc == 0)
+		{
+
+		}
+		else
+		{
+			texto = nc;
+			archivo << texto << "\n" << "\t";
+			texto = nc;
+			archivo << texto << "\n" << "\t";
+			texto2 = nom[i];
+			archivo << texto2 << "\n" << "\t";
+			texto2 = fecha[i];
+			archivo << texto2 << "\n" << "\t";
+			texto2 = td[i];
+			archivo << texto2 << "\n" << "\t";
+			texto = sub[i];
+			archivo << texto << "\n" << "\t";
+			texto3 = total= sub[i] + (sub[i] * .16);
+			archivo << texto3 << "\n" << "\t";
+
+		}
+	}
+	archivo.close();
+}
